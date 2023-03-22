@@ -23,6 +23,17 @@ public class TemplateService : ITemplateService
         return result;
     }
 
+    public Template GetById(int templateId)
+    {
+        if (templateId == 0) throw new Exception();
+
+        var result = _templateRepository.GetById(templateId);
+
+        if (result is null) throw new Exception();
+
+        return result;
+    }
+
     public bool Create(TemplateDto templateDto)
     {
         var template = _mapper.Map<Template>(templateDto);

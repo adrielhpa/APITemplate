@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using APITemplate.Domain.DTOs;
 using APITemplate.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,6 +27,62 @@ namespace APITemplate.Controllers
             try
             {
                 var result = _templateService.GetAll();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet("{templateId}")]
+        public IActionResult GetById(int templateId)
+        {
+            try
+            {
+                var result = _templateService.GetById(templateId);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        [HttpPost("new")]
+        public IActionResult Create(TemplateDto templateDto)
+        {
+            try
+            {
+                var result = _templateService.Create(templateDto);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        [HttpPut("update")]
+        public IActionResult Update(TemplateDto templateDto)
+        {
+            try
+            {
+                var result = _templateService.Update(templateDto);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        [HttpDelete("{templateId}")]
+        public IActionResult Delete(int templateId)
+        {
+            try
+            {
+                var result = _templateService.Delete(templateId);
                 return Ok(result);
             }
             catch (Exception ex)

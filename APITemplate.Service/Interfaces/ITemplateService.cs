@@ -7,7 +7,8 @@ namespace APITemplate.Service.Interfaces
 	public interface ITemplateService
 	{
 		List<int> GetAll();
-		bool Create(TemplateDto templateDto);
+		Template GetById(int templateId);
+        bool Create(TemplateDto templateDto);
         TemplateDto Update(TemplateDto templateDto);
 		bool Delete(int templateId);
 	}
